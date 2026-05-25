@@ -1,4 +1,4 @@
-#include <iostream>
+import std;
 import yaml.markup;
 
 class my_class {
