@@ -29,7 +29,20 @@ public:
     }
 
     static T deserialize(std::string text) {
-        return T{};
+        T obj;
+        std::istringstream iss(text);
+        constexpr std::meta::info ns_refl = ^^T;
+        constexpr std::meta::access_context ctx = std::meta::access_context::unchecked();
+        constexpr auto members = std::define_static_array(std::meta::members_of(ns_refl, ctx));
+
+        template for (constexpr auto& member : auto(members)) {
+            if constexpr (std::meta::has_identifier(member)) {
+                std::string fieldname;
+                iss >> fieldname;
+                iss >> obj.[:member:]; // TODO: assign correct field
+            }
+        }
+        return obj;
     }
 };
 
