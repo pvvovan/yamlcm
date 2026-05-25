@@ -38,6 +38,7 @@
 *.exe
 *.out
 *.app
+*.elf
 
 # Build directories
 build/
@@ -56,6 +57,7 @@ compile_commands.json
 *.log
 *.bak
 *.swp
+gcm.cache/
 
 # vcpkg
 vcpkg_installed/
