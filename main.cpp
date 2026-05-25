@@ -9,5 +9,6 @@ public:
 
 int main()
 {
-    std::cout << yaml::markup<my_class>::serialize(my_class()) << std::endl;
+    std::cout << yaml::markup<my_class>::serialize(my_class());
+    return 0;
 }
