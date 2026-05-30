@@ -9,6 +9,7 @@ set(HPP_FILES
 )
 
 target_sources(yamlmarkup INTERFACE
-    FILE_SET HEADERS FILES
-        ${HPP_FILES}
+    FILE_SET HEADERS
+    BASE_DIRS ${PROJECT_SOURCE_DIR}
+    FILES ${HPP_FILES}
 )
