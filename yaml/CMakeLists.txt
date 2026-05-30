@@ -6,6 +6,7 @@ target_compile_features(yamlmarkup INTERFACE cxx_std_26)
 target_compile_options(yamlmarkup INTERFACE --reflection)
 
 set(SRC
+    indent.hpp
     markup.hpp
 )
 

@@ -1,6 +1,7 @@
-#include<meta>
+#include <meta>
 #include <sstream>
-#include<string>
+#include <string>
+#include "indent.hpp"
 
 namespace yaml
 {
@@ -12,15 +13,16 @@ template<DC T>
 class markup
 {
 public:
-    static std::string serialize(T obj) {
+    static std::string serialize(T obj, int nesting = 0) {
         std::ostringstream oss;
+        indent ind(nesting);
         constexpr std::meta::info ns_refl = ^^T;
         constexpr std::meta::access_context ctx = std::meta::access_context::unchecked();
         constexpr auto members = std::define_static_array(std::meta::members_of(ns_refl, ctx));
 
         template for (constexpr auto& member : auto(members)) {
             if constexpr (std::meta::has_identifier(member)) {
-                oss << std::meta::identifier_of(member) << ": " << obj.[:member:] << '\n';
+                oss << ind << std::meta::identifier_of(member) << ": " << obj.[:member:] << '\n';
             }
         }
         return oss.str();
