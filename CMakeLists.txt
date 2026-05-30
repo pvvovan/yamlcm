@@ -5,18 +5,20 @@ add_subdirectory(yaml)
 
 Include(FetchContent)
 FetchContent_Declare(
-  Catch2
-  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-  GIT_TAG        v3.15.0
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG        v3.15.0
 )
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(${PROJECT_NAME} test.cpp)
+add_executable(${PROJECT_NAME}
+    Tests/test.cpp
+    Tests/test_indent.cpp
+)
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Catch2::Catch2WithMain
     yaml::markup
 )
-
 enable_testing()
 add_test(NAME YamlTest COMMAND ${PROJECT_NAME})
 
