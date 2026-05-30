@@ -21,7 +21,7 @@ public:
         constexpr auto members = std::define_static_array(std::meta::members_of(ns_refl, ctx));
 
         template for (constexpr auto& member : auto(members)) {
-            if constexpr (std::meta::has_identifier(member)) {
+            if constexpr (!std::meta::is_function(member)) {
                 oss << ind << std::meta::identifier_of(member) << ": " << obj.[:member:] << '\n';
             }
         }
@@ -36,7 +36,7 @@ public:
         constexpr auto members = std::define_static_array(std::meta::members_of(ns_refl, ctx));
 
         template for (constexpr auto& member : auto(members)) {
-            if constexpr (std::meta::has_identifier(member)) {
+            if constexpr (!std::meta::is_function(member)) {
                 std::string fieldname;
                 iss >> fieldname;
                 iss >> obj.[:member:]; // TODO: assign correct field

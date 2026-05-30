@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 4.3.3)
 project (yamltest LANGUAGES CXX)
 
-add_subdirectory(yaml)
+add_subdirectory(src)
 
 Include(FetchContent)
 FetchContent_Declare(
@@ -23,7 +23,7 @@ enable_testing()
 add_test(NAME YamlTest COMMAND ${PROJECT_NAME})
 
 if(MSVC) # Intended to set up file tabs in Visual Studio
-    list(TRANSFORM HPP_FILES PREPEND "yaml/")
+    list(TRANSFORM HPP_FILES PREPEND "src/")
 
     target_sources(${PROJECT_NAME} PRIVATE
         FILE_SET HEADERS
