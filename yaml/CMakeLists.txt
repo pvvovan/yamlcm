@@ -13,3 +13,5 @@ target_sources(yamlmarkup INTERFACE
     BASE_DIRS ${PROJECT_SOURCE_DIR}
     FILES ${HPP_FILES}
 )
+
+set(HPP_FILES ${HPP_FILES} PARENT_SCOPE)

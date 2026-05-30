@@ -7,10 +7,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 target_link_libraries(${PROJECT_NAME} yaml::markup)
 
 if(MSVC) # Intended to set up file tabs in Visual Studio
-    set(HPP_FILES
-        yaml/indent.hpp
-        yaml/markup.hpp
-    )
+    list(TRANSFORM HPP_FILES PREPEND "yaml/")
 
     target_sources(${PROJECT_NAME} PRIVATE
         FILE_SET HEADERS
