@@ -23,12 +23,12 @@ enable_testing()
 add_test(NAME YamlTest COMMAND ${PROJECT_NAME})
 
 if(MSVC) # Intended to set up file tabs in Visual Studio
-    list(TRANSFORM HPP_FILES PREPEND "src/")
+    list(TRANSFORM YAML_HPP_FILES PREPEND "src/")
 
     target_sources(${PROJECT_NAME} PRIVATE
         FILE_SET HEADERS
         BASE_DIRS ${PROJECT_SOURCE_DIR}
-        FILES ${HPP_FILES})
+        FILES ${YAML_HPP_FILES})
 
     set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -37,5 +37,5 @@ if(MSVC) # Intended to set up file tabs in Visual Studio
     source_group(
         TREE ${PROJECT_SOURCE_DIR}
         PREFIX Headers
-        FILES ${HPP_FILES})
+        FILES ${YAML_HPP_FILES})
 endif()

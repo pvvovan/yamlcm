@@ -14,5 +14,7 @@ TEST_CASE("serialize returns valid string")
 
 TEST_CASE("deserialize returns valid object")
 {
-    REQUIRE(2 == yaml::markup<dto1>::deserialize("val: 2\n").val);
+    dto1 d = yaml::markup<dto1>::deserialize("data: 123.3223\nval: 14\n");
+    REQUIRE(14 == d.val);
+    REQUIRE(123.3223 == d.data);
 }
