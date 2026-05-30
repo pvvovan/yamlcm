@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <sstream>
-#include "indent.hpp"
+#include "yaml/indent.hpp"
 
 TEST_CASE("stream operator")
 {

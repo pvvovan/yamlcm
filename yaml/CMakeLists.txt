@@ -4,6 +4,7 @@ add_library(yamlmarkup INTERFACE)
 add_library(yaml::markup ALIAS yamlmarkup)
 target_compile_features(yamlmarkup INTERFACE cxx_std_26)
 target_compile_options(yamlmarkup INTERFACE --reflection)
+target_include_directories(yamlmarkup INTERFACE ${PROJECT_SOURCE_DIR}/..)
 
 set(HPP_FILES
     indent.hpp
