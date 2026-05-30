@@ -1,10 +1,8 @@
-module;
+#include<meta>
+#include <sstream>
+#include<string>
 
-import std;
-
-export module yaml.markup;
-
-export namespace yaml
+namespace yaml
 {
 
 template<typename T>
